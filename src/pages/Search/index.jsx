@@ -1,0 +1,27 @@
+import React, { useState } from 'react'
+import Navbar from '../../components/Navbar'
+import { useFetch } from '../../hooks/useFetch'
+
+const Search = () => {
+  const [type, setType] = useState('artworks')
+  const { data, loading } = useFetch(type)
+  console.log(type, 'current type')
+  console.log(data, 'search data')
+  return (
+    <div>
+        <Navbar />
+        <div>
+            <input type="text" placeholder="Search" />
+            <select onChange={(e) => setType(e.target.value)}>
+                <option value="artworks">Artworks</option>
+                <option value="galleries">Galleries</option>
+                <option value="exhibitions">Exhibitions</option>
+                <option value="artwork-types">Artwork Types</option>
+                <option value="images">Images</option>
+            </select>
+        </div>
+    </div>
+  )
+}
+
+export default Search
