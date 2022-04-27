@@ -34,7 +34,6 @@ const Details = () => {
   }
   return (
     <div className="bg-cream">
-      <Navbar />
       <div className="flex md:px-10 md:pt-40">
         <div className="flex-1">
           <span className="block pb-10">
@@ -61,8 +60,18 @@ const Details = () => {
             <span className="uppercase text-xl block pb-10">{detail?.artwork_type_title}</span>
         <h1 className="text-8xl font-semibold font-italiana">{detail.title}</h1>
           <h2 className="text-xl pt-6">{detail?.artist_display}</h2>
-          <p className="text-gray-600 pt-5">{detail?.exhibition_history}</p>
-          <p className="pt-5 text-gray-800">{detail?.publication_history}</p>
+          {detail?.exhibition_history && (
+              <div className="md:pt-12">
+                  <h3 className="text-4xl font-medium">Exhibition History</h3>
+                  <p className="text-gray-600 pt-5">{detail?.exhibition_history}</p>
+              </div>
+          )}
+          {detail?.publication_history && (
+              <div className="md:pt-12">
+              <h3 className="text-4xl font-medium">Publication History</h3>
+              <p className="pt-5 text-gray-800">{detail?.publication_history}</p>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

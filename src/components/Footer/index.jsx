@@ -74,7 +74,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <span className="block text-[128px] font-medium flex-1">ARtHub</span>
+        <span className="block text-[128px] font-medium flex-1">ARtsHub</span>
       </div>
       <div className="md:pt-10 pb-5 flex items-center space-x-5">
           <span className="block text-sm">Copyright © 2022 ArtsHub. All rights reserved.</span>
