@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const PaginationControl = ({ page, setPage, currentPage, totalPages }) => {
   return (
@@ -62,12 +61,4 @@ const PaginationControl = ({ page, setPage, currentPage, totalPages }) => {
     </div>
   )
 }
-
 export default PaginationControl
-
-PaginationControl.propTypes = {
-  page: PropTypes.number.isRequired,
-  setPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired
-}

@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import Navbar from '../../components/Navbar'
-import chevronBack from '../../assets/icons/chevron-back.svg'
-import Footer from '../../components/Footer'
-
-const Details = () => {
-  const { id: artworkId } = useParams()
-  const [error, setError] = useState(null)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [detail, setDetail] = useState([])
-  console.log(artworkId, 'artwork id')
-  console.log(detail, 'detail')
-
-  useEffect(() => {
-    fetch(`https://api.artic.edu/api/v1/artworks/${artworkId}`)
-      .then((res) => res.json())
-      .then(
-        (data) => {
-          setDetail(data?.data)
-          setIsLoaded(true)
-        },
-        (error) => {
-          setIsLoaded(true)
-          setError(error)
-        }
-      )
-  }, [])
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
-  if (!isLoaded) {
-    return <div>Loading...</div>
-  }
-  return (
-    <div className="bg-cream">
-      <div className="flex md:px-10 md:pt-40">
+import Link from 'next/link'
+import Image from 'next/image'
+const getBGcolor = (id) => {
+    const colors = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "teal",
+      "purple",
+      "gray",
+    ];
+    return colors[id - 1] || colors[Math.random() * colors.length];
+  };
+const Artwork = ({artwork}) => {
+    const color = getBGcolor(artwork.id);
+    return (
+        <div className={`bg-[${color}]`}>
+             <div className="flex md:px-10 md:pt-40">
         <div className="flex-1">
           <span className="block pb-10">
-            <Link to="/" className="uppercase flex space-x-2 items-center">
-              <img src={chevronBack} />
+            <Link href="/">
+                <a className="uppercase flex space-x-2 items-center">
+                <Image src="/chevronback.svg" width={10} height={16} alt="Back to home page" />
               <span>back</span>
+                </a>
             </Link>
           </span>
           <div className="border-r border-gray-700 pr-4">
@@ -74,9 +59,7 @@ const Details = () => {
           )}
         </div>
       </div>
-      <Footer />
-    </div>
-  )
+        </div>
+    )
 }
-
-export default Details
+export default Artwork

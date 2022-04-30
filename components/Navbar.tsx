@@ -1,35 +1,42 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import ArtsHubLogo from '../../assets/icons/artshublogo.svg'
-import CustomLink from '../CustomLink'
+import Link from 'next/link'
+import Image from 'next/image'
+import CustomLink from './CustomLink'
 
 const navItems = [
   {
     title: 'Home',
-    link: '/'
+    link: '/',
   },
   {
     title: 'Tours',
-    link: '/tours'
+    link: '/tours',
   },
   {
     title: 'Products',
-    link: '/products'
-  }
+    link: '/products',
+  },
 ]
 const Navbar = () => {
   return (
-    <nav className="bg-[#FFF8F0] h-[80px] flex justify-between items-center md:px-10 border-b border-gray-300 w-full">
-      <Link to="/">
-        <img src={ArtsHubLogo} alt="ArtsHub Logo" />
+    <nav className="flex h-[80px] w-full items-center justify-between border-b border-gray-300 bg-[#FFF8F0] md:px-10">
+      <Link href="/">
+        <Image
+          src="/artshublogo.svg"
+          alt="ArtsHub Logo"
+          width={96}
+          height={33}
+        />
       </Link>
       <div className="flex">
-          {navItems.map(navItem => (
-              <CustomLink key={navItem.title} to={navItem.link}>{navItem.title}</CustomLink>
-          ))}
+        {navItems.map((navItem) => (
+          <CustomLink key={navItem.title} href={navItem.link}>
+            {navItem.title}
+          </CustomLink>
+        ))}
       </div>
       <div>
-        <Link to="/search">
+        <Link href="/search">
           <svg
             width="30"
             height="30"

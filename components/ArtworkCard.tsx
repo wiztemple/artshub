@@ -1,15 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import Link from 'next/link'
 
-const ArtCard = ({
+const ArtworkCard = ({
   title,
   artImage,
   artworkId,
   departmentTitle,
   artworkTypeTitle,
-  onLoanDisplay
-}) => {
+  onLoanDisplay}) => {
   return (
     <div className="bg-[#F1E6D9] artcard font-inter rounded-sm">
       <img
@@ -27,9 +25,9 @@ const ArtCard = ({
           <div className="text-gray-800 pt-2" dangerouslySetInnerHTML={{ __html: onLoanDisplay }}></div>
           <div className="w-full">
             <Link
-              to={`/artworks/${artworkId}`}
-              className="absolute right-6 bottom-16 flex items-center justify-center h-[40px] w-[40px] rounded-full border border-gray-800"
+              href={`/artworks/${artworkId}`}
             >
+              <a className="absolute right-6 bottom-16 flex items-center justify-center h-[40px] w-[40px] rounded-full border border-gray-800">
               <svg
                 width="18"
                 height="13"
@@ -44,6 +42,7 @@ const ArtCard = ({
                   fill="black"
                 />
               </svg>
+              </a>
             </Link>
           </div>
         </div>
@@ -51,19 +50,6 @@ const ArtCard = ({
     </div>
   )
 }
-export default ArtCard
 
-ArtCard.propTypes = {
-  artworkId: PropTypes.number.isRequired,
-  departmentTitle: PropTypes.string,
-  artworkTypeTitle: PropTypes.string,
-  artImage: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  onLoanDisplay: PropTypes.string
-}
+export default ArtworkCard
 
-ArtCard.defaultProps = {
-  departmentTitle: 'Title',
-  artworkTypeTitle: 'Artwork type',
-  onLoanDisplay: 'Arts'
-}
