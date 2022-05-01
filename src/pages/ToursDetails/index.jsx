@@ -5,16 +5,16 @@ import Footer from '../../components/Footer'
 // icons
 import chevronBack from '../../assets/icons/chevron-back.svg'
 
-const Details = () => {
-  const { id: artworkId } = useParams()
+const ToursDetails = () => {
+  const { id: tourId } = useParams()
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [detail, setDetail] = useState([])
-  console.log(artworkId, 'artwork id')
+  console.log(tourId, 'tour id')
   console.log(detail, 'detail')
 
   useEffect(() => {
-    fetch(`https://api.artic.edu/api/v1/artworks/${artworkId}`)
+    fetch(`https://api.artic.edu/api/v1/tours/${tourId}`)
       .then((res) => res.json())
       .then(
         (data) => {
@@ -38,24 +38,26 @@ const Details = () => {
       <div className="md:grid grid-cols-2 md:px-10 md:pt-40">
         <div>
           <span className="block pb-10">
-            <Link to="/" className="uppercase flex space-x-2 items-center">
+            <Link to="/tours" className="uppercase flex space-x-2 items-center">
               <img src={chevronBack} />
               <span>back</span>
             </Link>
           </span>
           <div className="border-r border-gray-700 pr-4">
             <img
-              src={`https://www.artic.edu/iiif/2/${detail.image_id}/full/843,/0/default.jpg`}
+              src={detail?.image}
               alt={detail.title}
+              className="w-full"
             />
             <div className="pt-5">
-              <span className="block">Artist: {detail?.artist_title}</span>
-              <span className="block">{detail?.artist_display}</span>
-              <span className="block">Credit Line: {detail?.credit_line}</span>
-              <span className="block">
-                Place of origin: {detail?.place_of_origin}
-              </span>
-              <span className="block">Dimensions: {detail?.dimensions}</span>
+                {detail?.artist_titles.length ? <h1 className="text-2xl font-medium">Artist Titles</h1> : ''}
+                {detail?.artist_titles?.map(artist => (
+                    <span className="block" key={artist}>{artist}</span>
+                ))}
+                <h1 className="text-2xl pt-4 font-medium">Artwork Titles</h1>
+                {detail?.artwork_titles?.map(artist => (
+                    <span className="block" key={artist}>{artist}</span>
+                ))}
             </div>
           </div>
         </div>
@@ -63,24 +65,13 @@ const Details = () => {
           <span className="uppercase text-xl block pb-10">
             {detail?.artwork_type_title}
           </span>
-          <h1 className="text-8xl font-semibold font-italiana">
+          <h1 className="text-8xl font-semibold font-italiana pb-2">
             {detail.title}
           </h1>
+          <div className="text-gray-800 pt-2 text-lg first-letter:text-6xl" dangerouslySetInnerHTML={{ __html: detail?.description }}></div>
+          <div className="text-gray-800 pt-3 text-lg" dangerouslySetInnerHTML={{ __html: detail?.intro }}></div>
+          <div className="text-gray-800 pt-2 text-lg" dangerouslySetInnerHTML={{ __html: detail?.intro_transcript }}></div>
           <h2 className="text-xl pt-6">{detail?.artist_display}</h2>
-          {detail?.exhibition_history && (
-            <div className="md:pt-12">
-              <h3 className="text-4xl font-medium">Exhibition History</h3>
-              <p className="text-gray-600 pt-5">{detail?.exhibition_history}</p>
-            </div>
-          )}
-          {detail?.publication_history && (
-            <div className="md:pt-12 overflow-x-hidden">
-              <h3 className="text-4xl font-medium">Publication History</h3>
-              <p className="pt-5 text-gray-800">
-                {detail?.publication_history}
-              </p>
-            </div>
-          )}
         </div>
       </div>
       <Footer />
@@ -88,4 +79,4 @@ const Details = () => {
   )
 }
 
-export default Details
+export default ToursDetails

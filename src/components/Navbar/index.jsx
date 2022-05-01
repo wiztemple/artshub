@@ -11,15 +11,11 @@ const navItems = [
   {
     title: 'Tours',
     link: '/tours'
-  },
-  {
-    title: 'Products',
-    link: '/products'
   }
 ]
 const Navbar = () => {
   return (
-    <nav className="bg-[#FFF8F0] h-[80px] flex justify-between items-center md:px-10 border-b border-gray-300 w-full">
+    <nav className='bg-cream h-[80px] flex justify-between items-center md:px-10 fixed border-b border-gray-300 w-full'>
       <Link to="/">
         <img src={ArtsHubLogo} alt="ArtsHub Logo" />
       </Link>

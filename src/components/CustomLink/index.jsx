@@ -13,7 +13,7 @@ const CustomLink = ({ children, to, ...props }) => {
   return (
       <div>
         <Link
-          className={`py-7 px-8 ${match ? 'border-b-2 border-gray-800' : ''}`}
+          className={`py-7 px-8 uppercase ${match ? 'font-medium' : ''}`}
           to={to}
           {...props}
         >
