@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const PaginationControl = ({ page, setPage, currentPage, totalPages }) => {
   return (
-    <div className="flex justify-between px-4 py-3 mt-10 border-2 border-gray-800 w-80 bg-[#F9EEE1]">
+    <div className="flex justify-between px-4 py-3 mt-10 border-2 border-gray-800 w-80 bg-white">
       <button type="button" onClick={() => setPage(page - 1)} disabled={page === 1 }>
         <svg
           width="30"

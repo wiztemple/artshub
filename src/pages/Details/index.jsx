@@ -34,8 +34,8 @@ const Details = () => {
     return <JellyLoader />
   }
   return (
-    <div className="bg-cream">
-      <div className="md:grid grid-cols-2 md:px-10 md:pt-40">
+    <div className="bg-white">
+      <div className="sm:grid grid-cols-2 sm:px-10 px-5 sm:pt-40 pt-20">
         <div>
           <span className="block pb-10">
             <Link to="/" className="uppercase flex space-x-2 items-center">
@@ -63,7 +63,7 @@ const Details = () => {
           <span className="uppercase text-xl block pb-10">
             {detail?.artwork_type_title}
           </span>
-          <h1 className="text-8xl font-semibold font-italiana">
+          <h1 className="sm:text-8xl text-5xl font-semibold font-italiana">
             {detail.title}
           </h1>
           <h2 className="text-xl pt-6">{detail?.artist_display}</h2>

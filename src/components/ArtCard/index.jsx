@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 
 const ArtCard = ({
@@ -10,21 +11,35 @@ const ArtCard = ({
   artworkTypeTitle,
   onLoanDisplay
 }) => {
+  const truncate = (input) =>
+    input?.length > 55 ? `${input.substring(0, 55)}...` : input
   return (
-    <div className="bg-[#F1E6D9] artcard font-inter rounded-sm">
-      <img
-        className="block h-[550px] w-full object-cover"
-        src={artImage}
-        alt={title}
-      />
-      <div className="relative flex px-5 pt-5 h-[250px]">
-        <div className="border-r-2 border-gray-700 flex-1 pr-3 h-[170px]">
+    <div className="bg-white artcard font-inter rounded-sm mb-10 sm:mb-0">
+      <motion.div
+        animate={{
+          scale: 1,
+          transition: {
+            duration: 1
+          }
+        }}
+      >
+        <img
+          className="block sm:h-[550px] h-[400px] w-full object-cover"
+          src={artImage}
+          alt={title}
+        />
+      </motion.div>
+      <div className="relative sm:flex px-5 pt-5 sm:h-[250px]">
+        <div className="sm:border-r-2 border-gray-700 flex-1 pr-3 h-[170px]">
           <span className="uppercase">{artworkTypeTitle}</span>
-          <h1 className="text-[24px] font-semibold uppercase">{title}</h1>
+          <Link to={`/artworks/${artworkId}`} className="block underline text-[24px] font-semibold uppercase">{truncate(title)}</Link>
         </div>
         <div className="flex-1 pl-5">
           <h1 className="text-sm uppercase font-medium">{departmentTitle}</h1>
-          <div className="text-gray-800 pt-2" dangerouslySetInnerHTML={{ __html: onLoanDisplay }}></div>
+          <div
+            className="text-gray-800 pt-2"
+            dangerouslySetInnerHTML={{ __html: onLoanDisplay }}
+          ></div>
           <div className="w-full">
             <Link
               to={`/artworks/${artworkId}`}

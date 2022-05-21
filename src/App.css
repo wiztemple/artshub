@@ -61,3 +61,25 @@
     transform: scale(1.2,1);
   }
 }
+.imageWrapper {
+  position: relative;
+}
+ .overlay {
+  position: absolute;
+  transition: all .3s ease-out;
+  display: none;
+  left: 40%;
+  top: 40%;
+}
+.imageWrapper > img {
+  box-shadow: 5px 10px 25px 0 rgb(0 0 0 / 20%), 0 8px 20px 0 rgb(0 0 0 / 10%);
+  transition: all .3s ease-in;
+}
+.imageWrapper > img:hover {
+  transform: scale(1.1);
+  transition: all .3s ease-out;
+}
+.imageWrapper > img:hover + .overlay {
+  display: flex;
+  transition: all .3s ease-in;
+}

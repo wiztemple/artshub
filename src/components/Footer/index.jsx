@@ -32,11 +32,11 @@ const works = [
 ]
 const Footer = () => {
   return (
-    <footer className="md:mt-32 border-t border-gray-300 md:px-10">
-      <Link to="/" className="block md:pt-20">
+    <footer className="bg-white sm:mt-32 mt-20 border-t border-gray-300 sm:px-10 px-5">
+      <Link to="/" className="block md:pt-20 pt-10">
         <img src={ArtsHubLogo} alt="ArtsHub Logo" />
       </Link>
-      <div className="flex md:pt-20 items-start">
+      <div className="md:flex md:pt-20 items-start">
         <div className="flex flex-1 md:space-x-12">
           <div className="">
             <span className="uppercase text-sm">WORKS</span>
@@ -74,12 +74,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <span className="block text-[128px] font-medium flex-1">ARtsHub</span>
+        <span className="block sm:text-[128px] text-5xl font-medium flex-1 sm:pt-0 sm:pb-0 pt-10 pb-5">ARtsHub</span>
       </div>
-      <div className="md:pt-10 pb-5 flex items-center space-x-5">
+      <div className="sm:pt-10 pb-5 sm:flex items-center sm:space-x-5">
           <span className="block text-sm">Copyright © 2022 ArtsHub. All rights reserved.</span>
-          <span className="block text-sm">Terms of use.</span>
-          <span className="block text-sm">Privacy Policy</span>
+          <span className="block text-sm pt-3 sm:pt-0">Terms of use.</span>
+          <span className="block text-sm pt-3 sm:pt-0">Privacy Policy</span>
       </div>
     </footer>
   )
